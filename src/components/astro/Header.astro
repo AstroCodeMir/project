@@ -1,0 +1,77 @@
+---
+import SearchBar from "../islands/SearchBar.tsx";
+import UserMenu from "../islands/UserMenu.tsx";
+---
+
+<header class="bg-orange-100 border-b border-orange-200 shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <img
+        src="/images/Paw.jpg"
+        alt="Happy Tails Logo"
+        class="w-10 h-10 rounded-full object-cover"
+      />
+      <span class="text-2xl font-extrabold text-orange-700 tracking-tight">
+        Happy Tails
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="/" class="text-brown-800 font-medium hover:text-orange-600 transition">
+        Home
+      </a>
+      <a href="/blog" class="text-brown-800 font-medium hover:text-orange-600 transition">
+        Articles
+      </a>
+      <a href="/media" class="text-brown-800 font-medium hover:text-orange-600 transition">
+        Media
+      </a>
+      <a href="/pages/about" class="text-brown-800 font-medium hover:text-orange-600 transition">
+        Pages
+      </a>
+      <a href="/dashboard" class="text-brown-800 font-medium hover:text-orange-600 transition">
+        Dashboard
+      </a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <SearchBar client:load />
+      <UserMenu client:load />
+    </div>
+    <!-- Mobile Toggle Button -->
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 rounded-md bg-orange-200 hover:bg-orange-300 transition"
+      aria-label="Toggle menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-orange-700"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav
+    id="mobile-menu"
+    class="hidden flex-col bg-orange-50 border-t border-orange-200 md:hidden"
+  >
+    <a href="/" class="px-6 py-3 text-brown-800 font-medium hover:bg-orange-100 transition">Home</a>
+    <a href="/blog" class="px-6 py-3 text-brown-800 font-medium hover:bg-orange-100 transition">Articles</a>
+    <a href="/media" class="px-6 py-3 text-brown-800 font-medium hover:bg-orange-100 transition">Media</a>
+    <a href="/pages/about" class="px-6 py-3 text-brown-800 font-medium hover:bg-orange-100 transition">Pages</a>
+    <a href="/dashboard" class="px-6 py-3 text-brown-800 font-medium hover:bg-orange-100 transition">Dashboard</a>
+  </nav>
+
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    toggle.addEventListener("click", () => menu.classList.toggle("hidden"));
+  </script>
+</header>
